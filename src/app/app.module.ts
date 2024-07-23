@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { BookEditComponent } from './pages/book/book-edit/book-edit.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookListComponent,
     BookCreateComponent,
     BookEditComponent,
-    ModalComponent
+    ModalComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar-brand" routerLink="/book" (click)="closeNavbar()">Biblioteca</div>
+  <div class="navbar-toggle" (click)="toggleNavbar()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="navbar-links" [class.active]="navbarOpen">
+    <a class="nav-link" routerLink="/book" (click)="closeNavbar()">Livros</a>
+    <a class="nav-link" routerLink="/author" (click)="closeNavbar()">Autores</a>
+    <a class="nav-link" routerLink="/gender" (click)="closeNavbar()">Gêneros</a>
+  </div>
+</nav>
