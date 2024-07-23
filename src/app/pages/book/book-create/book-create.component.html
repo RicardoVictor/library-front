@@ -7,35 +7,49 @@
 
   <div class="body">
     <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
-      <div class="item">
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          required
-          [(ngModel)]="book.name"
-          name="name"
-        />
+      <div class="items">
+        <div class="item">
+          <label for="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            required
+            [(ngModel)]="book.name"
+            name="name"
+          />
+        </div>
+        <div class="item">
+          <label for="author">Autor:</label>
+          <select
+            id="author"
+            required
+            [(ngModel)]="book.authorId"
+            name="author"
+          >
+            <option *ngFor="let author of authors" [value]="author.id">
+              {{ author.name }}
+            </option>
+          </select>
+        </div>
+        <div class="item">
+          <label for="gender">Gênero:</label>
+          <select
+            id="gender"
+            required
+            [(ngModel)]="book.genderId"
+            name="gender"
+          >
+            <option *ngFor="let gender of genders" [value]="gender.id">
+              {{ gender.name }}
+            </option>
+          </select>
+        </div>
       </div>
-      <div class="item">
-        <label for="author">Author:</label>
-        <select id="author" required [(ngModel)]="book.authorId" name="author">
-          <option *ngFor="let author of authors" [value]="author.id">
-            {{ author.name }}
-          </option>
-        </select>
-      </div>
-      <div class="item">
-        <label for="gender">Gender:</label>
-        <select id="gender" required [(ngModel)]="book.genderId" name="gender">
-          <option *ngFor="let gender of genders" [value]="gender.id">
-            {{ gender.name }}
-          </option>
-        </select>
-      </div>
+      <hr />
       <div class="footer">
+        <button (click)="handleBackPage()">Voltar</button>
         <button type="submit" [disabled]="!bookForm.form.valid">
-          Create Book
+          Criar Livro
         </button>
       </div>
     </form>

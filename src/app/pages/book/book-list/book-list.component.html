@@ -12,21 +12,31 @@
       <div>Ação</div>
     </div>
     <div class="book-list">
-      <div *ngFor="let book of books" class="book-item">
-        <div>{{ book.name }}</div>
-        <div>{{ book.author.name }}</div>
-        <div>{{ book.gender.name }}</div>
-        <div class="actions">
-          <img src="assets/edit.svg" class="edit" (click)="goToEdit(book.id)" />
-          <img
-            src="assets/delete.svg"
-            class="delete"
-            (click)="openModalDelete(book.id)"
-          />
+      <div class="none" *ngIf="books.length <= 0">
+        Nenhum livro para exibir na listagem.
+      </div>
+      <hr *ngIf="books.length <= 0" />
+      <div>
+        <div *ngFor="let book of books" class="book-item">
+          <div>{{ book.name }}</div>
+          <div>{{ book.author.name }}</div>
+          <div>{{ book.gender.name }}</div>
+          <div class="actions">
+            <img
+              src="assets/edit.svg"
+              class="edit"
+              (click)="goToEdit(book.id)"
+            />
+            <img
+              src="assets/delete.svg"
+              class="delete"
+              (click)="openModalDelete(book.id)"
+            />
+          </div>
         </div>
       </div>
     </div>
-    <div class="pagination">Page {{ pageNumber }} of {{ totalPages }}</div>
+    <div class="pagination">Página {{ pageNumber }} de {{ totalPages }}</div>
   </div>
 </div>
 

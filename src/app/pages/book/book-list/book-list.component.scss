@@ -4,6 +4,8 @@
   margin: 2rem 4rem;
   border: 1px solid rgb(220, 220, 220);
   border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+    rgba($color: grey, $alpha: 0.25);
 }
 
 .header {
@@ -87,4 +89,17 @@ app-modal {
       background-color: rgb(194, 194, 194);
     }
   }
+}
+
+.none {
+  padding: 1rem;
+  font-style: italic;
+  color: rgb(75, 75, 75);
+}
+
+hr {
+  border: none;
+  background-color: rgb(220, 220, 220);
+  height: 1px;
+  margin: 0;
 }

@@ -38,6 +38,8 @@ export class BookListComponent {
         this.books = response.items;
         this.totalItems = response.totalItems;
         this.totalPages = response.totalPages;
+        this.pageNumber = response.pageNumber;
+        this.pageSize = response.pageSize;
       } else {
         console.error();
       }

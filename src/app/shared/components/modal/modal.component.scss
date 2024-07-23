@@ -25,10 +25,9 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 2.5rem;
-      height: 4.5rem;
-      padding: 0 1.5rem;
-      width: 800px;
-      margin-top: 1.5rem;
+      height: 1.5rem;
+      padding: 2rem 2.5rem;
+      width: 45rem;
 
       .header-title {
         display: flex;
@@ -70,13 +69,13 @@
     }
 
     main {
-      padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+      padding: 0.5rem 1.5rem 1.5rem 2.5rem;
       border-bottom: 1px solid #ddd;
       max-width: 49rem;
     }
 
     footer {
-      padding: 1.5rem 4rem;
+      padding: 1.5rem 3rem;
       background-color: #ddd;
       display: flex;
       justify-content: flex-end;

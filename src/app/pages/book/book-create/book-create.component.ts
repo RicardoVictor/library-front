@@ -57,4 +57,8 @@ export class BookCreateComponent {
       },
     });
   }
+
+  handleBackPage() {
+    this.router.navigate(['/book']);
+  }
 }

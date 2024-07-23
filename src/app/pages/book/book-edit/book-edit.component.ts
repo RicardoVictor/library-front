@@ -97,4 +97,8 @@ export class BookEditComponent {
 
     return errorMessages;
   }
+
+  handleBackPage() {
+    this.router.navigate(['/book']);
+  }
 }
