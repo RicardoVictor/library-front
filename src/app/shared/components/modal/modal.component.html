@@ -1,0 +1,22 @@
+<div *ngIf="showModal" class="modal">
+  <section>
+    <header>
+      <div class="header-title">
+        <strong>{{ title }}</strong>
+      </div>
+      <div class="actions">
+        <ng-content select="[actions]"></ng-content>
+        <button class="gray-background" (click)="handleCloseModal()">x</button>
+      </div>
+    </header>
+    <div class="extra">
+      <ng-content select="[extra]"></ng-content>
+    </div>
+    <main>
+      <ng-content select="[main]"></ng-content>
+    </main>
+    <footer>
+      <ng-content select="[footer]"></ng-content>
+    </footer>
+  </section>
+</div>

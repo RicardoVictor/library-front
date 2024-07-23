@@ -1,0 +1,40 @@
+<button (click)="goToCreate()">Add</button>
+
+<div *ngIf="books" class="book-container">
+  <div class="book-header">
+    <div>Nome</div>
+    <div>Autor</div>
+    <div>Gênero</div>
+    <div>Ação</div>
+  </div>
+  <div class="book-list">
+    <div *ngFor="let book of books" class="book-item">
+      <div>{{ book.name }}</div>
+      <div>{{ book.author.name }}</div>
+      <div>{{ book.gender.name }}</div>
+      <div class="actions">
+        <img src="assets/edit.svg" class="edit" (click)="goToEdit(book.id)" />
+        <img
+          src="assets/delete.svg"
+          class="delete"
+          (click)="openModalDelete(book.id)"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="pagination">Page {{ pageNumber }} of {{ totalPages }}</div>
+</div>
+
+<app-modal
+  [showModal]="showModalDelete"
+  [title]="'Excluir livro?'"
+  (closeModalFunc)="closeModalDelete()"
+>
+  <strong main>
+    Tem certeza de que deseja excluir este livro? Esta ação é permanente e não
+    pode ser desfeita.
+  </strong>
+
+  <button footer (click)="closeModalDelete()">Cancelar</button>
+  <button footer (click)="handleDelete()">Excluir</button>
+</app-modal>

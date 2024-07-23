@@ -1,0 +1,42 @@
+.book-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.book-header,
+.book-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.book-header {
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+.book-list {
+  max-height: 500px; /* Ajuste conforme necessário */
+  overflow-y: auto;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.edit {
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
