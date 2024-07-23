@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header">
+    <p class="title">Gêneros</p>
+    <button class="create" (click)="goToCreate()">Novo Gênero</button>
+  </div>
+
+  <div *ngIf="genders" class="gender-container">
+    <div class="gender-header">
+      <div>Nome</div>
+      <div>Ações</div>
+    </div>
+    <div class="gender-list">
+      <div class="none" *ngIf="genders.length <= 0">
+        Nenhum gênero para exibir na listagem.
+      </div>
+      <hr *ngIf="genders.length <= 0" />
+      <div>
+        <div *ngFor="let book of genders" class="gender-item">
+          <div>{{ book.name }}</div>
+          <div class="actions">
+            <img
+              src="assets/edit.svg"
+              class="edit"
+              (click)="goToEdit(book.id)"
+            />
+            <img
+              src="assets/delete.svg"
+              class="delete"
+              (click)="openModalDelete(book.id)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">Página {{ pageNumber }} de {{ totalPages }}</div>
+  </div>
+</div>
+
+<app-modal
+  [showModal]="showModalDelete"
+  [title]="'Excluir gênero?'"
+  (closeModalFunc)="closeModalDelete()"
+>
+  <p main>
+    Tem certeza de que deseja excluir este gênero? Esta ação é permanente e não
+    pode ser desfeita.
+  </p>
+
+  <button footer (click)="closeModalDelete()">Cancelar</button>
+  <button footer (click)="handleDelete()">Excluir</button>
+</app-modal>

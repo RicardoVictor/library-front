@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
+import { GenderService } from '../service/gender.service';
 import { Router } from '@angular/router';
-import { BookFilterRequest } from '../models/book-filter.model';
-import { BookResponse } from '../models/book.model';
-import { BookService } from '../service/book.service';
+import { GenderResponse } from '../models/gender.model';
+import { AuthorFilterRequest } from '../../author/models/author-filter.model';
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss'],
+  selector: 'app-gender-list',
+  templateUrl: './gender-list.component.html',
+  styleUrls: ['./gender-list.component.scss']
 })
-export class BookListComponent {
-  books: BookResponse[] | undefined;
+export class GenderListComponent {
+  genders: GenderResponse[] | undefined;
   pageNumber = 1;
   pageSize = 10;
   totalItems: number = 0;
@@ -18,7 +18,7 @@ export class BookListComponent {
   showModalDelete: boolean = false;
   bookToDelete: string = '';
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(private genderService: GenderService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadBooks();
@@ -31,11 +31,11 @@ export class BookListComponent {
       genders: null,
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
-    } as BookFilterRequest;
+    } as AuthorFilterRequest;
 
-    this.bookService.get(filter).subscribe((response) => {
+    this.genderService.get(filter).subscribe((response) => {
       if (response) {
-        this.books = response.items;
+        this.genders = response.items;
         this.totalItems = response.totalItems;
         this.totalPages = response.totalPages;
         this.pageNumber = response.pageNumber;
@@ -47,11 +47,11 @@ export class BookListComponent {
   }
 
   goToCreate(): void {
-    this.router.navigate(['book/create']);
+    this.router.navigate(['gender/create']);
   }
 
   goToEdit(id: string): void {
-    this.router.navigate(['/book/', id]);
+    this.router.navigate(['/gender/', id]);
   }
 
   openModalDelete(id: string): void {
@@ -64,7 +64,7 @@ export class BookListComponent {
   }
 
   handleDelete() {
-    this.bookService.delete(this.bookToDelete).subscribe(() => {});
+    this.genderService.delete(this.bookToDelete).subscribe(() => {});
     this.showModalDelete = false;
     window.location.reload();
     alert('Livro deletado com sucesso.');

@@ -22,15 +22,15 @@
   }
 }
 
-.book-container {
+.gender-container {
   display: flex;
   flex-direction: column;
 }
 
-.book-header,
-.book-item {
+.gender-header,
+.gender-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
@@ -38,12 +38,12 @@
   padding: 1rem 0;
 }
 
-.book-header {
+.gender-header {
   color: white;
   background-color: #5b6a78;
 }
 
-.book-list {
+.gender-list {
   max-height: 500px;
   overflow-y: auto;
 }

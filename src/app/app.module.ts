@@ -10,6 +10,12 @@ import { BookEditComponent } from './pages/book/book-edit/book-edit.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { AuthorCreateComponent } from './pages/author/author-create/author-create.component';
+import { AuthorEditComponent } from './pages/author/author-edit/author-edit.component';
+import { AuthorListComponent } from './pages/author/author-list/author-list.component';
+import { GenderListComponent } from './pages/gender/gender-list/gender-list.component';
+import { GenderEditComponent } from './pages/gender/gender-edit/gender-edit.component';
+import { GenderCreateComponent } from './pages/gender/gender-create/gender-create.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     BookCreateComponent,
     BookEditComponent,
     ModalComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthorCreateComponent,
+    AuthorEditComponent,
+    AuthorListComponent,
+    GenderListComponent,
+    GenderEditComponent,
+    GenderCreateComponent
   ],
   imports: [
     BrowserModule,
