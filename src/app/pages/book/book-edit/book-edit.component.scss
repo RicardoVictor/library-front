@@ -1,0 +1,22 @@
+.container {
+  margin: 2rem 4rem;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 0.5rem;
+}
+
+.header {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center;
+
+  .title {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
+.body {
+  padding: 2rem;
+}

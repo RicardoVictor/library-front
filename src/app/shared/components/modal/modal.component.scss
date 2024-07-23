@@ -33,6 +33,7 @@
       .header-title {
         display: flex;
         flex-direction: column;
+        font-size: 20px;
 
         img {
           max-width: 35px;
@@ -56,6 +57,9 @@
         background-color: #ddd;
         border-radius: 50%;
         border: 0;
+        padding: 3px 8px;
+        font-size: 15px;
+        cursor: pointer;
       }
     }
 

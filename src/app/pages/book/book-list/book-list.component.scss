@@ -1,7 +1,27 @@
+@import "../../../../styles";
+
+.container {
+  margin: 2rem 4rem;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 0.5rem;
+}
+
+.header {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center;
+
+  .title {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
 .book-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .book-header,
@@ -11,21 +31,23 @@
   gap: 10px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  justify-items: center;
+  padding: 1rem 0;
 }
 
 .book-header {
-  font-weight: bold;
-  background-color: #f4f4f4;
+  color: white;
+  background-color: rgb(100, 100, 100);
 }
 
 .book-list {
-  max-height: 500px; /* Ajuste conforme necessário */
+  max-height: 500px;
   overflow-y: auto;
 }
 
 .pagination {
   text-align: center;
-  margin-top: 10px;
+  margin: 1rem;
 }
 
 .edit {
@@ -39,4 +61,30 @@
 .actions {
   display: flex;
   gap: 1rem;
+}
+
+.create {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgb(220, 220, 220);
+  }
+}
+
+app-modal {
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgb(194, 194, 194);
+    }
+  }
 }
