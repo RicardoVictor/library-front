@@ -4,6 +4,7 @@
   border-radius: 0.5rem;
   box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
     rgba($color: grey, $alpha: 0.25);
+  padding: 0;
 }
 
 .header {
@@ -20,14 +21,12 @@
 }
 
 .body {
-  padding: 2rem;
-
   form {
     .items {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin-bottom: 2rem;
+      padding: 2rem;
 
       .item {
         display: flex;
@@ -36,7 +35,7 @@
         input {
           border-radius: 8px;
           width: 250px;
-          height: 22px;
+          height: 23px;
         }
 
         select {
@@ -73,5 +72,5 @@ hr {
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
-  margin-top: 2rem;
+  padding: 2rem;
 }
