@@ -8,10 +8,21 @@
   color: #fff;
 }
 
+.navbar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.navbar-logo {
+  filter: brightness(0) invert(1);
+  height: 27.5px;
+}
+
 .navbar-brand {
   font-size: 1.5rem;
   color: #fff;
-  cursor: pointer;
 }
 
 .navbar-toggle {
