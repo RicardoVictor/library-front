@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { GenderService } from '../service/gender.service';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { GenderResponse } from '../models/gender.model';
 import { AuthorFilterRequest } from '../../author/models/author-filter.model';
+import { GenderFilterRequest } from '../models/gender-filter.model';
+import { GenderResponse } from '../models/gender.model';
+import { GenderService } from '../service/gender.service';
 
 @Component({
   selector: 'app-gender-list',
   templateUrl: './gender-list.component.html',
-  styleUrls: ['./gender-list.component.scss']
+  styleUrls: ['./gender-list.component.scss'],
 })
 export class GenderListComponent {
   genders: GenderResponse[] | undefined;
@@ -18,20 +19,32 @@ export class GenderListComponent {
   showModalDelete: boolean = false;
   bookToDelete: string = '';
 
+  @Input() filter!: GenderFilterRequest;
+
   constructor(private genderService: GenderService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadGenders();
   }
 
-  loadGenders() {
-    var filter = {
-      name: null,
-      pageSize: this.pageSize,
-      pageNumber: this.pageNumber,
-    } as AuthorFilterRequest;
+  ngOnChanges() {
+    if (this.filter) {
+      this.resetPage();
+      this.loadGenders();
+    }
+  }
 
-    this.genderService.get(filter).subscribe((response) => {
+  resetPage() {
+    this.pageNumber = 1;
+  }
+
+  loadGenders() {
+    const filters = JSON.parse(JSON.stringify(this.filter));
+
+    this.filter.pageSize = this.pageSize;
+    this.filter.pageNumber = this.pageNumber;
+
+    this.genderService.get(filters).subscribe((response) => {
       if (response) {
         this.genders = response.items;
         this.totalItems = response.totalItems;

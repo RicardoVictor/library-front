@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { AuthorService } from '../service/author.service';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthorResponse } from '../models/author.model';
 import { AuthorFilterRequest } from '../models/author-filter.model';
+import { AuthorResponse } from '../models/author.model';
+import { AuthorService } from '../service/author.service';
 
 @Component({
   selector: 'app-author-list',
@@ -18,20 +18,32 @@ export class AuthorListComponent {
   showModalDelete: boolean = false;
   bookToDelete: string = '';
 
+  @Input() filter!: AuthorFilterRequest;
+
   constructor(private authorService: AuthorService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadAuthors();
   }
 
-  loadAuthors() {
-    var filter = {
-      name: null,
-      pageSize: this.pageSize,
-      pageNumber: this.pageNumber,
-    } as AuthorFilterRequest;
+  ngOnChanges() {
+    if (this.filter) {
+      this.resetPage();
+      this.loadAuthors();
+    }
+  }
 
-    this.authorService.get(filter).subscribe((response) => {
+  resetPage() {
+    this.pageNumber = 1;
+  }
+
+  loadAuthors() {
+    const filters = JSON.parse(JSON.stringify(this.filter));
+
+    this.filter.pageSize = this.pageSize;
+    this.filter.pageNumber = this.pageNumber;
+
+    this.authorService.get(filters).subscribe((response) => {
       if (response) {
         this.authors = response.items;
         this.totalItems = response.totalItems;

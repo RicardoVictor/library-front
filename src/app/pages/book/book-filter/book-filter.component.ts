@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AuthorResponse } from '../../author/models/author.model';
 import { AuthorService } from '../../author/service/author.service';
+import { GenderResponse } from '../../gender/models/gender.model';
 import { GenderService } from '../../gender/service/gender.service';
 import { BookFilterRequest } from '../models/book-filter.model';
-import { BookService } from '../service/book.service';
-import { AuthorResponse } from '../../author/models/author.model';
-import { GenderResponse } from '../../gender/models/gender.model';
 
 @Component({
   selector: 'app-book-filter',
@@ -15,7 +14,6 @@ import { GenderResponse } from '../../gender/models/gender.model';
 export class BookFilterComponent {
   constructor(
     public formBuilder: FormBuilder,
-    public bookService: BookService,
     private authorService: AuthorService,
     private genderService: GenderService
   ) {}
@@ -40,8 +38,8 @@ export class BookFilterComponent {
       pageNumber: 1,
     };
 
-        this.loadAuthors();
-        this.loadGenders();
+    this.loadAuthors();
+    this.loadGenders();
 
     this.search();
   }
@@ -71,7 +69,7 @@ export class BookFilterComponent {
   }
 
   search() {
-    console.log(this.filter)
+    console.log(this.filter);
     this.filterEmmiter.emit(this.filter);
   }
 }

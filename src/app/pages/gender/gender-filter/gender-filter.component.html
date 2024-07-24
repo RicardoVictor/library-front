@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="header" (click)="handleToggleAccordion()">
+    <p class="title">Filtro</p>
+    <img
+      class="accordion-img"
+      [ngClass]="{ 'rotate-animation': !isOpen }"
+      src="assets/arrow.svg"
+    />
+  </div>
+  <hr />
+  <div class="body" [ngClass]="{ 'is-collapsed': !isOpen }">
+    <form (ngSubmit)="search()" #genderForm="ngForm">
+      <div class="items">
+        <div class="item">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" [(ngModel)]="filter.name" name="name" />
+        </div>
+      </div>
+      <hr />
+      <div class="footer">
+        <button (click)="clean()" class="clean">
+          <img src="assets/clean.svg" alt="" />
+          Limpar
+        </button>
+        <button
+          class="main-button"
+          type="submit"
+          [disabled]="!genderForm.form.valid"
+        >
+          Filtrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
