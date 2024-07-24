@@ -8,3 +8,19 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.main-button {
+  background-color: #343a40 !important;
+  color: white !important;
+  border: 0 !important;
+
+  &:hover {
+    background-color: #5b6a78 !important;
+    border: 0 !important;
+  }
+
+  &:disabled {
+    background-color: #b8b8b8 !important;
+    border: 0 !important;
+  }
+}

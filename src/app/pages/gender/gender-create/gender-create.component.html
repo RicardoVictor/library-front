@@ -22,7 +22,11 @@
       <hr />
       <div class="footer">
         <button (click)="handleBackPage()">Voltar</button>
-        <button type="submit" [disabled]="!genderForm.form.valid">
+        <button
+          class="main-button"
+          type="submit"
+          [disabled]="!genderForm.form.valid"
+        >
           Criar Gênero
         </button>
       </div>

@@ -48,7 +48,11 @@
       <hr />
       <div class="footer">
         <button (click)="handleBackPage()">Voltar</button>
-        <button type="submit" [disabled]="!bookForm.form.valid">
+        <button
+          class="main-button"
+          type="submit"
+          [disabled]="!bookForm.form.valid"
+        >
           Criar Livro
         </button>
       </div>
