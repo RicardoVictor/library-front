@@ -1,1 +1,31 @@
-<p>author-edit works!</p>
+<div class="container">
+  <div class="header">
+    <p class="title">Editar Autor</p>
+  </div>
+
+  <hr />
+
+  <div class="body">
+    <form (ngSubmit)="onSubmit()" #authorForm="ngForm">
+      <div class="items">
+        <div class="item">
+          <label for="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            required
+            [(ngModel)]="author.name"
+            name="name"
+          />
+        </div>
+      </div>
+      <hr />
+      <div class="footer">
+        <button (click)="handleBackPage()">Voltar</button>
+        <button type="submit" [disabled]="!authorForm.form.valid">
+          Editar Autor
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

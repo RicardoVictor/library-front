@@ -21,14 +21,12 @@ export class GenderListComponent {
   constructor(private genderService: GenderService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadBooks();
+    this.loadGenders();
   }
 
-  loadBooks() {
+  loadGenders() {
     var filter = {
       name: null,
-      authors: null,
-      genders: null,
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
     } as AuthorFilterRequest;

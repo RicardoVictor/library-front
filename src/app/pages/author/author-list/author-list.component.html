@@ -1,1 +1,51 @@
-<p>author-list works!</p>
+<div class="container">
+  <div class="header">
+    <p class="title">Autores</p>
+    <button class="create" (click)="goToCreate()">Novo Autor</button>
+  </div>
+
+  <div *ngIf="authors" class="author-container">
+    <div class="author-header">
+      <div>Nome</div>
+      <div>Ações</div>
+    </div>
+    <div class="author-list">
+      <div class="none" *ngIf="authors.length <= 0">
+        Nenhum autor para exibir na listagem.
+      </div>
+      <hr *ngIf="authors.length <= 0" />
+      <div>
+        <div *ngFor="let author of authors" class="author-item">
+          <div>{{ author.name }}</div>
+          <div class="actions">
+            <img
+              src="assets/edit.svg"
+              class="edit"
+              (click)="goToEdit(author.id)"
+            />
+            <img
+              src="assets/delete.svg"
+              class="delete"
+              (click)="openModalDelete(author.id)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">Página {{ pageNumber }} de {{ totalPages }}</div>
+  </div>
+</div>
+
+<app-modal
+  [showModal]="showModalDelete"
+  [title]="'Excluir autor?'"
+  (closeModalFunc)="closeModalDelete()"
+>
+  <p main>
+    Tem certeza de que deseja excluir este autor? Esta ação é permanente e não
+    pode ser desfeita.
+  </p>
+
+  <button footer (click)="closeModalDelete()">Cancelar</button>
+  <button footer (click)="handleDelete()">Excluir</button>
+</app-modal>

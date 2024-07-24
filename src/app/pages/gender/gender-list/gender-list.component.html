@@ -15,18 +15,18 @@
       </div>
       <hr *ngIf="genders.length <= 0" />
       <div>
-        <div *ngFor="let book of genders" class="gender-item">
-          <div>{{ book.name }}</div>
+        <div *ngFor="let gender of genders" class="gender-item">
+          <div>{{ gender.name }}</div>
           <div class="actions">
             <img
               src="assets/edit.svg"
               class="edit"
-              (click)="goToEdit(book.id)"
+              (click)="goToEdit(gender.id)"
             />
             <img
               src="assets/delete.svg"
               class="delete"
-              (click)="openModalDelete(book.id)"
+              (click)="openModalDelete(gender.id)"
             />
           </div>
         </div>

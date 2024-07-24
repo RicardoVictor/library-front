@@ -1,0 +1,108 @@
+@import "../../../../styles";
+
+.container {
+  margin: 2rem 4rem;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+    rgba($color: grey, $alpha: 0.25);
+  padding: 0;
+}
+
+.header {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center;
+
+  .title {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
+.author-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-header,
+.author-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  justify-items: center;
+  padding: 1rem 0;
+}
+
+.author-header {
+  color: white;
+  background-color: #5b6a78;
+}
+
+.author-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 1.5rem;
+}
+
+.edit {
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.create {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgb(220, 220, 220);
+  }
+}
+
+app-modal {
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgb(194, 194, 194);
+    }
+  }
+}
+
+.none {
+  padding: 1rem;
+  font-style: italic;
+  color: rgb(75, 75, 75);
+}
+
+hr {
+  border: none;
+  background-color: rgb(100, 100, 100);
+  height: 1px;
+  margin: 0;
+}

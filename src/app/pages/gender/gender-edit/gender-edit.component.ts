@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { GenderPostRequest } from '../models/gender.model';
+import { GenderService } from '../service/gender.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-gender-edit',
@@ -6,5 +9,64 @@ import { Component } from '@angular/core';
   styleUrls: ['./gender-edit.component.scss']
 })
 export class GenderEditComponent {
+  gender: GenderPostRequest = {
+    name: '',
+  };
 
+  id: string = '';
+
+  constructor(
+    private genderService: GenderService,
+    public router: Router,
+    public route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const idFromUrl = params['id'];
+
+      if (idFromUrl) {
+        this.id = idFromUrl;
+        this.loadGenderData();
+      }
+    });
+  }
+
+  private loadGenderData() {
+    this.genderService.getById(this.id).subscribe((gender) => {
+      if (gender) {
+        this.gender.name = gender.name;
+      }
+    });
+  }
+
+  onSubmit(): void {
+    this.genderService.update(this.id, this.gender).subscribe({
+      next: (response) => {
+        if (response) alert('Gênero editado com sucesso!');
+        this.router.navigate(['/gender']);
+      },
+      error: (e) => {
+        if (e.error.message) alert(e.error.message);
+        if (e.error.errors) alert(this.formatValidationErrors(e.error.errors));
+      },
+    });
+  }
+
+  private formatValidationErrors(errors: any): string {
+    let errorMessages = '';
+    for (const key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        errors[key].forEach((element: any) => {
+          errorMessages += `${element}\n`;
+        });
+      }
+    }
+
+    return errorMessages;
+  }
+
+  handleBackPage() {
+    this.router.navigate(['/gender']);
+  }
 }

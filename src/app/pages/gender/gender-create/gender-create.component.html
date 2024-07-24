@@ -1,1 +1,31 @@
-<p>gender-create works!</p>
+<div class="container">
+  <div class="header">
+    <p class="title">Criar Gênero</p>
+  </div>
+
+  <hr />
+
+  <div class="body">
+    <form (ngSubmit)="onSubmit()" #genderForm="ngForm">
+      <div class="items">
+        <div class="item">
+          <label for="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            required
+            [(ngModel)]="gender.name"
+            name="name"
+          />
+        </div>
+      </div>
+      <hr />
+      <div class="footer">
+        <button (click)="handleBackPage()">Voltar</button>
+        <button type="submit" [disabled]="!genderForm.form.valid">
+          Criar Gênero
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
