@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+::ng-deep app-book-filter {
+  display: flex;
+  justify-content: center;
+}
+
 ::ng-deep app-author-list {
   display: flex;
   justify-content: center;

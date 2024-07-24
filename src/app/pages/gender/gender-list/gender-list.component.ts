@@ -12,7 +12,7 @@ import { AuthorFilterRequest } from '../../author/models/author-filter.model';
 export class GenderListComponent {
   genders: GenderResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 5;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;

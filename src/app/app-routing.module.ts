@@ -9,6 +9,7 @@ import { GenderEditComponent } from './pages/gender/gender-edit/gender-edit.comp
 import { AuthorListComponent } from './pages/author/author-list/author-list.component';
 import { AuthorCreateComponent } from './pages/author/author-create/author-create.component';
 import { AuthorEditComponent } from './pages/author/author-edit/author-edit.component';
+import { BookComponent } from './pages/book/book.component';
 
 const routes: Routes = [
   {
@@ -18,11 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: BookListComponent,
+    component: BookComponent,
   },
   {
     path: 'book',
-    component: BookListComponent,
+    component: BookComponent,
   },
   {
     path: 'book/create',

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookFilterRequest } from '../models/book-filter.model';
 import { BookResponse } from '../models/book.model';
@@ -9,14 +9,16 @@ import { BookService } from '../service/book.service';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit, OnChanges {
   books: BookResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 5;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;
   bookToDelete: string = '';
+
+  @Input() filter!: BookFilterRequest;
 
   constructor(private bookService: BookService, private router: Router) {}
 
@@ -24,16 +26,24 @@ export class BookListComponent {
     this.loadBooks();
   }
 
-  loadBooks() {
-    var filter = {
-      name: null,
-      authors: null,
-      genders: null,
-      pageSize: this.pageSize,
-      pageNumber: this.pageNumber,
-    } as BookFilterRequest;
+  ngOnChanges() {
+    if (this.filter) {
+      this.resetPage();
+      this.loadBooks();
+    }
+  }
 
-    this.bookService.get(filter).subscribe((response) => {
+  resetPage() {
+    this.pageNumber = 1;
+  }
+
+  loadBooks() {
+    const filters = JSON.parse(JSON.stringify(this.filter));
+
+    this.filter.pageSize = this.pageSize;
+    this.filter.pageNumber = this.pageNumber;
+
+    this.bookService.get(filters).subscribe((response) => {
       if (response) {
         this.books = response.items;
         this.totalItems = response.totalItems;

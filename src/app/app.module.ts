@@ -16,6 +16,8 @@ import { AuthorListComponent } from './pages/author/author-list/author-list.comp
 import { GenderListComponent } from './pages/gender/gender-list/gender-list.component';
 import { GenderEditComponent } from './pages/gender/gender-edit/gender-edit.component';
 import { GenderCreateComponent } from './pages/gender/gender-create/gender-create.component';
+import { BookFilterComponent } from './pages/book/book-filter/book-filter.component';
+import { BookComponent } from './pages/book/book.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { GenderCreateComponent } from './pages/gender/gender-create/gender-creat
     AuthorListComponent,
     GenderListComponent,
     GenderEditComponent,
-    GenderCreateComponent
+    GenderCreateComponent,
+    BookComponent,
+    BookFilterComponent
   ],
   imports: [
     BrowserModule,
