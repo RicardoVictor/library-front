@@ -12,11 +12,11 @@
     <form (ngSubmit)="search()" #bookForm="ngForm">
       <div class="items">
         <div class="item">
-          <label for="name">Nome:</label>
+          <label for="name">Nome</label>
           <input type="text" id="name" [(ngModel)]="filter.name" name="name" />
         </div>
         <div class="item">
-          <label for="author">Autor:</label>
+          <label for="author">Autor</label>
           <select id="author" [(ngModel)]="filter.authors" name="author">
             <option *ngFor="let author of authors" [value]="author.name">
               {{ author.name }}
@@ -24,7 +24,7 @@
           </select>
         </div>
         <div class="item">
-          <label for="gender">Gênero:</label>
+          <label for="gender">Gênero</label>
           <select name="gender" [(ngModel)]="filter.genders" name="gender">
             <option *ngFor="let gender of genders" [value]="gender.id">
               {{ gender.name }}

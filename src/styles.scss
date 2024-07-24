@@ -25,6 +25,15 @@ body {
   }
 }
 
+.delete-button {
+  border-color: red !important;
+  color: red !important;
+
+  &:hover {
+    background-color: rgb(255, 224, 224) !important;
+  }
+}
+
 .toast-error {
   width: 20rem !important;
   border-radius: 16px !important;
