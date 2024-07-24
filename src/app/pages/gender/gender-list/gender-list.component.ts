@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthorFilterRequest } from '../../author/models/author-filter.model';
 import { GenderFilterRequest } from '../models/gender-filter.model';
 import { GenderResponse } from '../models/gender.model';
 import { GenderService } from '../service/gender.service';
@@ -10,7 +9,7 @@ import { GenderService } from '../service/gender.service';
   templateUrl: './gender-list.component.html',
   styleUrls: ['./gender-list.component.scss'],
 })
-export class GenderListComponent {
+export class GenderListComponent implements OnChanges {
   genders: GenderResponse[] | undefined;
   pageNumber = 1;
   pageSize = 5;
@@ -22,10 +21,6 @@ export class GenderListComponent {
   @Input() filter!: GenderFilterRequest;
 
   constructor(private genderService: GenderService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.loadGenders();
-  }
 
   ngOnChanges() {
     if (this.filter) {

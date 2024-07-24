@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorFilterRequest } from '../models/author-filter.model';
 import { AuthorResponse } from '../models/author.model';
@@ -9,7 +9,7 @@ import { AuthorService } from '../service/author.service';
   templateUrl: './author-list.component.html',
   styleUrls: ['./author-list.component.scss'],
 })
-export class AuthorListComponent {
+export class AuthorListComponent implements OnChanges {
   authors: AuthorResponse[] | undefined;
   pageNumber = 1;
   pageSize = 5;
@@ -21,10 +21,6 @@ export class AuthorListComponent {
   @Input() filter!: AuthorFilterRequest;
 
   constructor(private authorService: AuthorService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.loadAuthors();
-  }
 
   ngOnChanges() {
     if (this.filter) {
