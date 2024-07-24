@@ -69,7 +69,6 @@ export class BookFilterComponent {
   }
 
   search() {
-    console.log(this.filter);
     this.filterEmmiter.emit(this.filter);
   }
 }

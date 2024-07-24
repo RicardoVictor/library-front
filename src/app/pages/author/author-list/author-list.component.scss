@@ -51,8 +51,14 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
   margin: 1.5rem;
+  gap: 1rem;
+
+  img {
+    cursor: pointer;
+  }
 }
 
 .edit {

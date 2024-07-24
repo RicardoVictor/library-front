@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GenderPostRequest } from '../models/gender.model';
 import { GenderService } from '../service/gender.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gender-edit',
@@ -18,7 +19,8 @@ export class GenderEditComponent {
   constructor(
     private genderService: GenderService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +45,12 @@ export class GenderEditComponent {
   onSubmit(): void {
     this.genderService.update(this.id, this.gender).subscribe({
       next: (response) => {
-        if (response) alert('Gênero editado com sucesso!');
+        if (response) this.toastr.success('Gênero editado com sucesso!');
         this.router.navigate(['/gender']);
       },
       error: (e) => {
-        if (e.error.message) alert(e.error.message);
-        if (e.error.errors) alert(this.formatValidationErrors(e.error.errors));
+        if (e.error.message) this.toastr.error(e.error.message);
+        if (e.error.errors) this.toastr.error(this.formatValidationErrors(e.error.errors));
       },
     });
   }

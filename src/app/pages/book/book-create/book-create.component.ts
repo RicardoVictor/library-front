@@ -6,6 +6,7 @@ import { AuthorService } from '../../author/service/author.service';
 import { GenderService } from '../../gender/service/gender.service';
 import { AuthorResponse } from '../../author/models/author.model';
 import { GenderResponse } from '../../gender/models/gender.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-create',
@@ -26,7 +27,8 @@ export class BookCreateComponent {
     private bookService: BookService,
     private authorService: AuthorService,
     private genderService: GenderService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.loadAuthors();
@@ -52,10 +54,28 @@ export class BookCreateComponent {
   onSubmit(): void {
     this.bookService.create(this.book).subscribe({
       next: (response) => {
-        if (response) alert('Livro criado com sucesso!');
+        if (response) this.toastr.success('Livro criado com sucesso!');
         this.router.navigate(['/book']);
       },
+      error: (e) => {
+        if (e.error.message) this.toastr.error(e.error.message);
+        if (e.error.errors)
+          this.toastr.error(this.formatValidationErrors(e.error.errors));
+      },
     });
+  }
+
+  private formatValidationErrors(errors: any): string {
+    let errorMessages = '';
+    for (const key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        errors[key].forEach((element: any) => {
+          errorMessages += `${element}\n`;
+        });
+      }
+    }
+
+    return errorMessages;
   }
 
   handleBackPage() {

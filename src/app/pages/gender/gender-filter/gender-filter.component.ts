@@ -37,7 +37,6 @@ export class GenderFilterComponent {
   }
 
   search() {
-    console.log(this.filter);
     this.filterEmmiter.emit(this.filter);
   }
 }

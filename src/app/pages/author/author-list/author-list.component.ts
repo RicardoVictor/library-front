@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorFilterRequest } from '../models/author-filter.model';
 import { AuthorResponse } from '../models/author.model';
 import { AuthorService } from '../service/author.service';
@@ -20,12 +21,33 @@ export class AuthorListComponent implements OnChanges {
 
   @Input() filter!: AuthorFilterRequest;
 
-  constructor(private authorService: AuthorService, private router: Router) {}
+  constructor(
+    private authorService: AuthorService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnChanges() {
     if (this.filter) {
       this.resetPage();
       this.loadAuthors();
+    }
+
+    const showSuccessMessage = localStorage.getItem(
+      'showSuccessDeleteMessageAuthor'
+    );
+    const showErrorMessage = localStorage.getItem(
+      'showErrorDeleteMessageAuthor'
+    );
+
+    if (showSuccessMessage) {
+      this.toastr.success('Autor deletado com sucesso!');
+      localStorage.removeItem('showSuccessDeleteMessageAuthor');
+    }
+
+    if (showErrorMessage) {
+      this.toastr.error('Não foi possível deletar este autor!');
+      localStorage.removeItem('showErrorDeleteMessageAuthor');
     }
   }
 
@@ -34,21 +56,22 @@ export class AuthorListComponent implements OnChanges {
   }
 
   loadAuthors() {
-    const filters = JSON.parse(JSON.stringify(this.filter));
-
     this.filter.pageSize = this.pageSize;
     this.filter.pageNumber = this.pageNumber;
 
-    this.authorService.get(filters).subscribe((response) => {
-      if (response) {
+    const filters = JSON.parse(JSON.stringify(this.filter));
+
+    this.authorService.get(filters).subscribe({
+      next: (response) => {
         this.authors = response.items;
         this.totalItems = response.totalItems;
         this.totalPages = response.totalPages;
         this.pageNumber = response.pageNumber;
         this.pageSize = response.pageSize;
-      } else {
-        console.error();
-      }
+      },
+      error: () => {
+        this.toastr.error('Erro ao recuperar autores!');
+      },
     });
   }
 
@@ -70,9 +93,31 @@ export class AuthorListComponent implements OnChanges {
   }
 
   handleDelete() {
-    this.authorService.delete(this.bookToDelete).subscribe(() => {});
-    this.showModalDelete = false;
-    window.location.reload();
-    alert('Livro deletado com sucesso.');
+    this.authorService.delete(this.bookToDelete).subscribe({
+      next: () => {
+        this.showModalDelete = false;
+        localStorage.setItem('showSuccessDeleteMessageAuthor', 'true');
+        window.location.reload();
+      },
+      error: () => {
+        this.showModalDelete = false;
+        localStorage.setItem('showErrorDeleteMessageAuthor', 'true');
+        window.location.reload();
+      },
+    });
+  }
+
+  handleDecreasePage() {
+    if (this.pageNumber > 1) {
+      this.pageNumber -= 1;
+      this.loadAuthors();
+    }
+  }
+
+  handleIncreasePage() {
+    if (this.pageNumber < this.totalPages) {
+      this.pageNumber += 1;
+      this.loadAuthors();
+    }
   }
 }

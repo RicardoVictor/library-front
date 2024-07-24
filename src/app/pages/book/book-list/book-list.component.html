@@ -36,7 +36,11 @@
         </div>
       </div>
     </div>
-    <div class="pagination">Página {{ pageNumber }}/{{ totalPages }}</div>
+    <div class="pagination">
+      <img src="assets/left-arrow.svg" (click)="handleDecreasePage()" />
+      Página {{ pageNumber }}/{{ totalPages }}
+      <img src="assets/right-arrow.svg" (click)="handleIncreasePage()" />
+    </div>
   </div>
 </div>
 

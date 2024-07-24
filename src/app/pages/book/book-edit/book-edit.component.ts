@@ -6,6 +6,7 @@ import { AuthorService } from '../../author/service/author.service';
 import { GenderService } from '../../gender/service/gender.service';
 import { AuthorResponse } from '../../author/models/author.model';
 import { GenderResponse } from '../../gender/models/gender.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-edit',
@@ -29,7 +30,8 @@ export class BookEditComponent {
     private authorService: AuthorService,
     private genderService: GenderService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -75,12 +77,12 @@ export class BookEditComponent {
   onSubmit(): void {
     this.bookService.update(this.id, this.book).subscribe({
       next: (response) => {
-        if (response) alert('Livro editado com sucesso!');
+        if (response) this.toastr.success('Livro editado com sucesso!');
         this.router.navigate(['/book']);
       },
       error: (e) => {
-        if (e.error.message) alert(e.error.message);
-        if (e.error.errors) alert(this.formatValidationErrors(e.error.errors));
+        if (e.error.message) this.toastr.error(e.error.message);
+        if (e.error.errors) this.toastr.error(this.formatValidationErrors(e.error.errors));
       },
     });
   }
