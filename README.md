@@ -1,27 +1,85 @@
+
 # Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+Este é o projeto de uma biblioteca, desenvolvido utilizando Angular 16.
 
-## Development server
+Abaixo você encontrará como Clonar e Executar o Projeto. 👇
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Segue o passo a passo:
 
-## Code scaffolding
+## Passo 1: Instalar o Node.js e npm
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Baixar o Node.js**
+   - Acesse o site oficial do Node.js: [Node.js](https://nodejs.org/)
+   - Baixe e instale a versão LTS (Long Term Support).
 
-## Build
+2. **Verificar a Instalação**
+   - Abra o terminal (Prompt de Comando no Windows, Terminal no macOS/Linux).
+   - Execute os seguintes comandos para verificar se o Node.js e o npm foram instalados corretamente:
+     ```bash
+     node -v
+     npm -v
+     ```
+   - Você deve ver a versão do Node.js e do npm instaladas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Passo 2: Instalar o Angular CLI
 
-## Running unit tests
+1. **Instalar o Angular CLI Globalmente**
+   - No terminal, execute o comando:
+     ```bash
+     npm install -g @angular/cli
+     ```
+   - Isso instalará a ferramenta de linha de comando do Angular.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Verificar a Instalação do Angular CLI**
+   - Execute o comando:
+     ```bash
+     ng version
+     ```
+   - Você deve ver informações sobre a versão do Angular CLI.
 
-## Running end-to-end tests
+## Passo 3: Clonar o Repositório do Projeto
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Obter o URL do Repositório**
+   - Certifique-se de ter o URL do repositório Git onde o projeto está hospedado.
 
-## Further help
+2. **Clonar o Repositório**
+   - No terminal, navegue até o diretório onde você deseja clonar o projeto.
+   - Execute o comando:
+     ```bash
+     git clone https://github.com/RicardoVictor/library-front.git
+     ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. **Navegar para o Diretório do Projeto**
+   - Após a clonagem, entre no diretório do projeto:
+     ```bash
+     cd library-front
+     ```
+
+## Passo 4: Instalar Dependências do Projeto
+
+1. **Instalar Dependências**
+   - Execute o comando:
+     ```bash
+     npm install
+     ```
+   - Isso instalará todas as dependências listadas no arquivo `package.json` do projeto.
+
+## Passo 5: Executar o Projeto
+
+1. **Iniciar o Servidor de Desenvolvimento**
+   - Execute o comando:
+     ```bash
+     ng serve
+     ```
+   - O Angular CLI irá compilar o projeto e iniciar um servidor de desenvolvimento.
+
+2. **Acessar o Projeto no Navegador**
+   - Abra o navegador e acesse:
+     ```
+     http://localhost:4200
+     ```
+   - Você verá o projeto sendo executado.
+
+
+Se você tiver problemas adicionais ou precisar de mais assistência, mande um email para [rvictorsoliveira@gmail.com](rvictorsoliveira@gmail.com).
