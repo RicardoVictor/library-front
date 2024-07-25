@@ -81,5 +81,11 @@ Segue o passo a passo:
      ```
    - Você verá o projeto sendo executado.
 
+## Passo 6: Como Parar o Servidor
+
+1. **Parar o Servidor**
+   - No terminal onde o servidor está em execução, pressione `Ctrl + C` para parar o servidor.
+
+## Problemas
 
 Se você tiver problemas adicionais ou precisar de mais assistência, mande um email para [rvictorsoliveira@gmail.com](rvictorsoliveira@gmail.com).
