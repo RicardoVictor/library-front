@@ -17,32 +17,33 @@
   .title {
     margin: 0;
     font-size: 20px;
+    font-weight: 500;
   }
 }
 
 .body {
   form {
     .items {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 1rem;
       padding: 2rem;
+      grid-template-columns: 1fr 1fr 1fr;
 
       .item {
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
 
         input {
           border-radius: 8px;
-          width: 250px;
-          height: 23px;
+          height: 2rem;
+border-width: 1px;
         }
 
         select {
           border-radius: 8px;
           border-width: 2px;
-          width: 250px;
-          height: 23px;
+          height: 2rem;
+border-width: 1px;
         }
       }
     }
@@ -72,5 +73,5 @@ hr {
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 }

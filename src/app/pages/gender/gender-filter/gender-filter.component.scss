@@ -1,0 +1,112 @@
+.container {
+  margin: 2rem 4rem 0 4rem;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.25rem 0.625rem 0.125rem
+    rgba($color: grey, $alpha: 0.25);
+  padding: 0;
+}
+
+.header {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center;
+  cursor: pointer;
+
+  .title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.body {
+  form {
+    .items {
+      display: grid;
+      gap: 1rem;
+      padding: 2rem;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+
+        input {
+          border-radius: 8px;
+          height: 2rem;
+border-width: 1px;
+        }
+
+        select {
+          border-radius: 8px;
+          border-width: 2px;
+          height: 2rem;
+border-width: 1px;
+        }
+      }
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgb(220, 220, 220);
+      }
+    }
+  }
+
+  &.is-collapsed {
+    display: none;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+hr {
+  border: none;
+  background-color: rgb(100, 100, 100);
+  height: 1px;
+  margin: 0;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgb(220, 220, 220);
+  }
+}
+
+.accordion-img {
+  transition: all 0.3s ease-in-out;
+
+  &.rotate-animation {
+    transform: rotate(180deg);
+  }
+}
+
+.clean {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  img {
+    height: 20px;
+  }
+}

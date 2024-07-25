@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header" (click)="handleToggleAccordion()">
+    <p class="title">Filtro</p>
+    <img
+      class="accordion-img"
+      [ngClass]="{ 'rotate-animation': !isOpen }"
+      src="assets/arrow.svg"
+    />
+  </div>
+  <hr />
+  <div class="body" [ngClass]="{ 'is-collapsed': !isOpen }">
+    <form (ngSubmit)="search()" #bookForm="ngForm">
+      <div class="items">
+        <div class="item">
+          <label for="name">Nome</label>
+          <input type="text" id="name" [(ngModel)]="filter.name" name="name" />
+        </div>
+        <div class="item">
+          <label for="author">Autor</label>
+          <select id="author" [(ngModel)]="filter.authors" name="author">
+            <option *ngFor="let author of authors" [value]="author.name">
+              {{ author.name }}
+            </option>
+          </select>
+        </div>
+        <div class="item">
+          <label for="gender">Gênero</label>
+          <select name="gender" [(ngModel)]="filter.genders" name="gender">
+            <option *ngFor="let gender of genders" [value]="gender.id">
+              {{ gender.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <hr />
+      <div class="footer">
+        <button (click)="clean()" class="clean">
+          <img src="assets/clean.svg" alt="" />
+          Limpar
+        </button>
+        <button
+          class="main-button"
+          type="submit"
+          [disabled]="!bookForm.form.valid"
+        >
+          Filtrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

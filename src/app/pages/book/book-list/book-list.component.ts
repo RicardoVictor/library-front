@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BookFilterRequest } from '../models/book-filter.model';
 import { BookResponse } from '../models/book.model';
 import { BookService } from '../service/book.service';
@@ -9,40 +10,66 @@ import { BookService } from '../service/book.service';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
-export class BookListComponent {
+export class BookListComponent implements OnChanges {
   books: BookResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 10;
+  pageSize = 5;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;
   bookToDelete: string = '';
 
-  constructor(private bookService: BookService, private router: Router) {}
+  @Input() filter!: BookFilterRequest;
 
-  ngOnInit(): void {
-    this.loadBooks();
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnChanges() {
+    if (this.filter) {
+      this.resetPage();
+      this.loadBooks();
+    }
+
+    const showSuccessMessage = localStorage.getItem(
+      'showSuccessDeleteMessageBook'
+    );
+    const showErrorMessage = localStorage.getItem('showErrorDeleteMessageBook');
+
+    if (showSuccessMessage) {
+      this.toastr.success('Livro deletado com sucesso!');
+      localStorage.removeItem('showSuccessDeleteMessageBook');
+    }
+
+    if (showErrorMessage) {
+      this.toastr.error('Não foi possível deletar este livro!');
+      localStorage.removeItem('showErrorDeleteMessageBook');
+    }
+  }
+
+  resetPage() {
+    this.pageNumber = 1;
   }
 
   loadBooks() {
-    var filter = {
-      name: null,
-      authors: null,
-      genders: null,
-      pageSize: this.pageSize,
-      pageNumber: this.pageNumber,
-    } as BookFilterRequest;
+    this.filter.pageSize = this.pageSize;
+    this.filter.pageNumber = this.pageNumber;
 
-    this.bookService.get(filter).subscribe((response) => {
-      if (response) {
+    const filters = JSON.parse(JSON.stringify(this.filter));
+
+    this.bookService.get(filters).subscribe({
+      next: (response) => {
         this.books = response.items;
         this.totalItems = response.totalItems;
         this.totalPages = response.totalPages;
         this.pageNumber = response.pageNumber;
         this.pageSize = response.pageSize;
-      } else {
-        console.error();
-      }
+      },
+      error: () => {
+        this.toastr.error('Erro ao recuperar livros!');
+      },
     });
   }
 
@@ -64,9 +91,31 @@ export class BookListComponent {
   }
 
   handleDelete() {
-    this.bookService.delete(this.bookToDelete).subscribe(() => {});
-    this.showModalDelete = false;
-    window.location.reload();
-    alert('Livro deletado com sucesso.');
+    this.bookService.delete(this.bookToDelete).subscribe({
+      next: () => {
+        this.showModalDelete = false;
+        localStorage.setItem('showSuccessDeleteMessageBook', 'true');
+        window.location.reload();
+      },
+      error: () => {
+        this.showModalDelete = false;
+        localStorage.setItem('showErrorDeleteMessageBook', 'true');
+        window.location.reload();
+      },
+    });
+  }
+
+  handleDecreasePage() {
+    if (this.pageNumber > 1) {
+      this.pageNumber -= 1;
+      this.loadBooks();
+    }
+  }
+
+  handleIncreasePage() {
+    if (this.pageNumber < this.totalPages) {
+      this.pageNumber += 1;
+      this.loadBooks();
+    }
   }
 }

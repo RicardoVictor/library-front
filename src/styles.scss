@@ -8,3 +8,50 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.main-button {
+  background-color: #343a40 !important;
+  color: white !important;
+  border: 0 !important;
+  width: 8rem !important;
+
+  &:hover {
+    background-color: #5b6a78 !important;
+    border: 0 !important;
+  }
+
+  &:disabled {
+    background-color: #b8b8b8 !important;
+    border: 0 !important;
+  }
+}
+
+.delete-button {
+  border-color: red !important;
+  color: red !important;
+
+  &:hover {
+    background-color: rgb(255, 224, 224) !important;
+  }
+}
+
+.toast-error {
+  width: 20rem !important;
+  border-radius: 16px !important;
+  top: 4rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.toast-success {
+  width: 20rem !important;
+  border-radius: 16px !important;
+  top: 4rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.toast-warning {
+  width: 20rem !important;
+  border-radius: 16px !important;
+  top: 4rem !important;
+  padding-right: 1.5rem !important;
+}

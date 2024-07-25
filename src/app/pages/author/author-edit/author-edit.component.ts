@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorPostRequest } from '../models/author.model';
 import { AuthorService } from '../service/author.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-author-edit',
@@ -18,7 +19,8 @@ export class AuthorEditComponent {
   constructor(
     private authorService: AuthorService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +45,12 @@ export class AuthorEditComponent {
   onSubmit(): void {
     this.authorService.update(this.id, this.author).subscribe({
       next: (response) => {
-        if (response) alert('Autor editado com sucesso!');
+        if (response) this.toastr.success('Autor editado com sucesso!');
         this.router.navigate(['/author']);
       },
       error: (e) => {
-        if (e.error.message) alert(e.error.message);
-        if (e.error.errors) alert(this.formatValidationErrors(e.error.errors));
+        if (e.error.message) this.toastr.error(e.error.message);
+        if (e.error.errors) this.toastr.error(this.formatValidationErrors(e.error.errors));
       },
     });
   }

@@ -9,7 +9,7 @@
     <form (ngSubmit)="onSubmit()" #genderForm="ngForm">
       <div class="items">
         <div class="item">
-          <label for="name">Nome:</label>
+          <label for="name">Nome</label>
           <input
             type="text"
             id="name"
@@ -22,7 +22,11 @@
       <hr />
       <div class="footer">
         <button (click)="handleBackPage()">Voltar</button>
-        <button type="submit" [disabled]="!genderForm.form.valid">
+        <button
+          class="main-button"
+          type="submit"
+          [disabled]="!genderForm.form.valid"
+        >
           Criar Gênero
         </button>
       </div>

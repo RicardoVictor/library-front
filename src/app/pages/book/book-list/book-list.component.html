@@ -36,7 +36,11 @@
         </div>
       </div>
     </div>
-    <div class="pagination">Página {{ pageNumber }} de {{ totalPages }}</div>
+    <div class="pagination">
+      <img src="assets/left-arrow.svg" (click)="handleDecreasePage()" />
+      Página {{ pageNumber }}/{{ totalPages }}
+      <img src="assets/right-arrow.svg" (click)="handleIncreasePage()" />
+    </div>
   </div>
 </div>
 
@@ -51,5 +55,5 @@
   </p>
 
   <button footer (click)="closeModalDelete()">Cancelar</button>
-  <button footer (click)="handleDelete()">Excluir</button>
+  <button footer class="delete-button" (click)="handleDelete()">Excluir</button>
 </app-modal>

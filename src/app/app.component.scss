@@ -13,6 +13,11 @@
   justify-content: center;
 }
 
+::ng-deep app-book-filter {
+  display: flex;
+  justify-content: center;
+}
+
 ::ng-deep app-author-list {
   display: flex;
   justify-content: center;
@@ -28,6 +33,11 @@
   justify-content: center;
 }
 
+::ng-deep app-author-filter {
+  display: flex;
+  justify-content: center;
+}
+
 ::ng-deep app-gender-list {
   display: flex;
   justify-content: center;
@@ -39,6 +49,11 @@
 }
 
 ::ng-deep app-gender-create {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep app-gender-filter {
   display: flex;
   justify-content: center;
 }
