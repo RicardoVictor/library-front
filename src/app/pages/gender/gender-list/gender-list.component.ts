@@ -4,6 +4,7 @@ import { GenderFilterRequest } from '../models/gender-filter.model';
 import { GenderResponse } from '../models/gender.model';
 import { GenderService } from '../service/gender.service';
 import { ToastrService } from 'ngx-toastr';
+import { PAGE_SIZE } from 'src/configs';
 
 @Component({
   selector: 'app-gender-list',
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class GenderListComponent implements OnChanges {
   genders: GenderResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = PAGE_SIZE;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;

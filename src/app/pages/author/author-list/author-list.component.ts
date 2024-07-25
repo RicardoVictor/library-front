@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthorFilterRequest } from '../models/author-filter.model';
 import { AuthorResponse } from '../models/author.model';
 import { AuthorService } from '../service/author.service';
+import { PAGE_SIZE } from 'src/configs';
 
 @Component({
   selector: 'app-author-list',
@@ -13,7 +14,7 @@ import { AuthorService } from '../service/author.service';
 export class AuthorListComponent implements OnChanges {
   authors: AuthorResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = PAGE_SIZE;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;
