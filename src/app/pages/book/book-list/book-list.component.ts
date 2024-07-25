@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BookFilterRequest } from '../models/book-filter.model';
 import { BookResponse } from '../models/book.model';
 import { BookService } from '../service/book.service';
+import { PAGE_SIZE } from 'src/configs';
 
 @Component({
   selector: 'app-book-list',
@@ -13,7 +14,7 @@ import { BookService } from '../service/book.service';
 export class BookListComponent implements OnChanges {
   books: BookResponse[] | undefined;
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = PAGE_SIZE;
   totalItems: number = 0;
   totalPages: number = 0;
   showModalDelete: boolean = false;

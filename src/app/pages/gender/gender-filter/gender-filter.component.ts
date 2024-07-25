@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { GenderFilterRequest } from '../models/gender-filter.model';
+import { PAGE_SIZE } from 'src/configs';
 
 @Component({
   selector: 'app-gender-filter',
@@ -21,7 +22,7 @@ export class GenderFilterComponent {
   ngOnInit() {
     this.filter = {
       name: null,
-      pageSize: 5,
+      pageSize: PAGE_SIZE,
       pageNumber: 1,
     };
 

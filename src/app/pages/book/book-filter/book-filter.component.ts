@@ -5,6 +5,7 @@ import { AuthorService } from '../../author/service/author.service';
 import { GenderResponse } from '../../gender/models/gender.model';
 import { GenderService } from '../../gender/service/gender.service';
 import { BookFilterRequest } from '../models/book-filter.model';
+import { PAGE_SIZE } from 'src/configs';
 
 @Component({
   selector: 'app-book-filter',
@@ -34,7 +35,7 @@ export class BookFilterComponent {
       name: null,
       authors: null,
       genders: null,
-      pageSize: 5,
+      pageSize: PAGE_SIZE,
       pageNumber: 1,
     };
 
